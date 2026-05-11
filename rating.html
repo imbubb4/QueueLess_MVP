@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Calificar servicio</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <div class="card center">
+
+      <h1>Califica tu experiencia</h1>
+
+      <p class="helper">Gracias por usar QueueLess — toca una estrella para elegir tu calificación</p>
+
+      <div class="stars" role="radiogroup" aria-label="Calificación">
+        <button type="button" class="star" data-value="1" aria-label="1 estrella">★</button>
+        <button type="button" class="star" data-value="2" aria-label="2 estrellas">★</button>
+        <button type="button" class="star" data-value="3" aria-label="3 estrellas">★</button>
+        <button type="button" class="star" data-value="4" aria-label="4 estrellas">★</button>
+        <button type="button" class="star" data-value="5" aria-label="5 estrellas">★</button>
+      </div>
+
+      <div class="actions">
+        <button id="btnEnviarRating">Enviar calificación</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script type="module" src="js/rating.js"></script>
+
+</body>
+</html>

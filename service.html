@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Servicio en curso</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <div class="card service-card">
+
+      <h1>Atención en curso</h1>
+
+      <div class="ticket-info">
+        <div class="info-row">
+          <div>
+            <div class="label">Ticket</div>
+            <div id="serviceTicket" class="value">---</div>
+          </div>
+          <div id="serviceEstado" class="badge">Estado</div>
+        </div>
+
+        <div class="info-row">
+          <div class="label">Servicio</div>
+          <div id="serviceTipo" class="value">Corte clásico</div>
+        </div>
+
+        <div class="info-row">
+          <div class="label">Total</div>
+          <div id="servicePrecio" class="value">S/ 25</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="btnCalificar">Finalizar y calificar</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script type="module" src="js/service.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mi Ticket</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <div class="card ticket-card">
+
+      <h1>Tu Ticket</h1>
+
+      <div class="ticket-info">
+        <div class="info-row">
+          <div>
+            <div class="label">Ticket</div>
+            <div id="ticketCodigo" class="value">---</div>
+          </div>
+          <div id="ticketEstado" class="badge">Estado</div>
+        </div>
+
+        <div class="info-row">
+          <div class="label">Tiempo estimado</div>
+          <div id="ticketTiempo" class="value">15 min</div>
+        </div>
+
+      </div>
+
+      <div class="contador-box">
+        <h3>Tiempo restante</h3>
+        <h1 id="contador">15:00</h1>
+      </div>
+
+      <div class="actions">
+        <button id="btnLlegue">Llegué</button>
+        <button id="btnCancelarCola" class="secondary">Cancelar</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ALERTAS -->
+
+  <div id="alertBox" class="alert hidden">
+
+    <p id="alertText"></p>
+
+  </div>
+
+  <script type="module" src="js/ticket.js"></script>
+
+</body>
+</html>

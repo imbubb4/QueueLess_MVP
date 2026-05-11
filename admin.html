@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin QueueLess</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- LOGIN -->
+
+  <section id="loginSection" class="container">
+
+    <div class="card">
+
+      <h1>QueueLess Admin</h1>
+
+      <input
+        type="text"
+        id="adminUser"
+        placeholder="Usuario"
+      >
+
+      <input
+        type="password"
+        id="adminPass"
+        placeholder="Contraseña"
+      >
+
+      <button id="btnLogin">
+        Ingresar
+      </button>
+
+      <p id="errorLogin" class="error"></p>
+
+    </div>
+
+  </section>
+
+  <!-- DASHBOARD -->
+
+  <section id="dashboardSection" class="container hidden">
+
+    <h1>Dashboard QueueLess</h1>
+
+    <div class="card">
+
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <h2>Clientes en cola</h2>
+        <div class="label" style="margin-left:auto">Activos: <span id="ticketsCount" class="badge">0</span></div>
+      </div>
+
+      <div id="listaTickets"></div>
+
+    </div>
+
+  </section>
+
+  <script type="module" src="js/admin.js"></script>
+
+</body>
+</html>
