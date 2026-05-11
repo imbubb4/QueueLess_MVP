@@ -24,6 +24,15 @@ body {
   color: #111827;
 }
 
+/* On small screens, align to top so content scrolls naturally */
+@media (max-width: 700px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+}
+
 .container {
   width: 100%;
   max-width: 420px;
@@ -131,6 +140,29 @@ body.sending .card { transform: scale(0.995); opacity: 0.85; }
   .site-title { font-size:1rem; }
   .card { padding:16px; border-radius:12px; }
   .stars .star { font-size:1.8rem; padding:6px; }
+}
+
+/* General small/medium screen adjustments */
+@media (max-width: 900px) {
+  .container { max-width: 96%; }
+  .site-header { flex-direction: row; align-items:center; }
+  .site-subtitle { display:block; }
+  .card { margin: 12px auto; }
+  .info-row { flex-direction: column; align-items: flex-start; }
+  .info-row .value { margin-top: 6px; }
+  .actions { flex-direction: column; }
+  .actions button { width: 100%; }
+  .contador-box { padding: 14px; }
+  .contador-box h1 { font-size: 36px; }
+  .ticket-card { text-align: left; }
+}
+
+/* Very small screens: compact spacing */
+@media (max-width: 420px) {
+  .info-row { padding: 8px; }
+  .badge { padding: 4px 8px; font-size: 0.85rem; }
+  h1, h2 { font-size: 1.05rem; }
+  .site-subtitle { display:none; }
 }
 
 @media (min-width: 900px) {
