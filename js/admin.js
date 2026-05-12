@@ -24,15 +24,15 @@ btnLogin.addEventListener("click", () => {
   const user = adminUser.value.trim();
   const pass = adminPass.value.trim();
 
-if (user === "admin" && pass === "1234") {
+  if (user === "admin" && pass === "1234") {
 
-  sessionStorage.setItem("adminAuth", "true");
+    sessionStorage.setItem("adminAuth", "true");
 
-  loginSection.classList.add("hidden");
+    loginSection.classList.add("hidden");
 
-  dashboardSection.classList.remove("hidden");
+    dashboardSection.classList.remove("hidden");
 
-  cargarTickets();
+    cargarTickets();
 
   } else {
 
@@ -106,16 +106,14 @@ window.verDetalle = (id) => {
 
 };
 
-// MANTENER SESIÓN
-
+// MANTENER SESIÓN - decide qué sección mostrar inmediatamente para evitar flash
 const auth = sessionStorage.getItem("adminAuth");
-
 if (auth === "true") {
-
   loginSection.classList.add("hidden");
-
   dashboardSection.classList.remove("hidden");
-
   cargarTickets();
-
-};
+} else {
+  // show login if not authenticated
+  loginSection.classList.remove("hidden");
+  dashboardSection.classList.add("hidden");
+}
