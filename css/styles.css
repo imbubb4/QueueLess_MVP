@@ -133,6 +133,61 @@ body.sending .card { transform: scale(0.995); opacity: 0.85; }
 }
 .badge { animation: popIn 260ms ease; }
 
+/* Skeleton loading (shimmer) */
+.skeleton-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.85);
+  z-index: 9997;
+}
+.skeleton-card {
+  width: 90%;
+  max-width: 420px;
+  padding: 20px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+}
+.skeleton-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03));
+  margin-bottom: 12px;
+}
+.skeleton-line {
+  height: 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03));
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.skeleton-line.short { width: 40%; }
+.skeleton-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.6), rgba(255,255,255,0));
+  transform: translateX(-120%);
+  animation: shimmer 1.2s linear infinite;
+}
+.skeleton-button {
+  height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03));
+  margin-top: 8px;
+}
+@keyframes shimmer {
+  to { transform: translateX(120%); }
+}
+
+/* Hide visually when .hidden exists (reuses existing utility) */
+.skeleton-overlay.hidden { display: none; }
+
 /* Responsive tweaks */
 @media (max-width: 420px) {
   .container { padding: 16px; }

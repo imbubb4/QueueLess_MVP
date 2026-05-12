@@ -22,6 +22,14 @@ btnEntrar.addEventListener("click", async () => {
 
   }
 
+  // Mostrar skeleton overlay mientras se procesa el registro
+  const skeleton = document.getElementById('skeletonOverlay');
+  try {
+    skeleton.classList.remove('hidden');
+    btnEntrar.disabled = true;
+    nombreInput.disabled = true;
+  } catch (e) {}
+
   const ticketsRef = ref(database, "tickets");
 
   const nuevoTicket = push(ticketsRef);
@@ -40,6 +48,9 @@ btnEntrar.addEventListener("click", async () => {
     creado: Date.now()
 
   });
+
+  // nota: redirección sucederá inmediatamente después de crear el ticket
+  // no es necesario ocultar el skeleton aquí porque la página navegará.
 
   // GUARDAR LOCAL
 
