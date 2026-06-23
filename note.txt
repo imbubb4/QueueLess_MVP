@@ -1,0 +1,113 @@
+================================================================================
+                        QUEUELESS MVP - NOTAS DE MIGRACIÓN
+================================================================================
+
+CAMBIOS REALIZADOS
+------------------
+
+Se migró el proyecto completo de HTML/CSS/JS vanilla a una arquitectura moderna:
+
+- Tecnologías: Vue 3, TypeScript, Vite, Pinia, Vue Router, SCSS
+- Arquitectura: Clean Architecture (separación por capas)
+- Node: 22
+- Backend: Firebase Realtime Database (se mantiene igual)
+- Diseño: Paleta blanca/gris con acentos morados, tipografía Inter
+
+Mejoras principales vs el código anterior:
+  1. SPA con Vue Router → navegación fluida sin recargas de página
+  2. TypeScript estricto en todas las capas → menos bugs en tiempo de ejecución
+  3. Clean Architecture → dominio desacoplado de Firebase (fácil de cambiar DB)
+  4. Pinia → estado centralizado y reactivo (ticket activo, sesión admin)
+  5. Manejo de errores en stores → feedback al usuario si algo falla
+  6. Ticket IDs de 6 caracteres alfanuméricos → reduce riesgo de colisión
+  7. UX mejorada: botones con estado disabled, loading, toasts animados
+  8. Código modular y mantenible → cada vista es un componente independiente
+
+
+ESTRUCTURA DEL PROYECTO
+-----------------------
+
+src/
+├── domain/                         # Capa de dominio (reglas de negocio)
+│   ├── entities/
+│   │   └── Ticket.ts               # Entidad Ticket, tipos de estado
+│   └── repositories/
+│       └── TicketRepository.ts     # Contrato/interfaz del repositorio
+│
+├── application/                    # Capa de aplicación (casos de uso)
+│   ├── CreateTicket.ts             # Crear un nuevo ticket en la cola
+│   ├── UpdateTicketStatus.ts       # Cambiar estado (llegué, cancelar)
+│   ├── FinalizeService.ts          # Admin finaliza atención + activa siguiente
+│   └── RateService.ts              # Cliente califica el servicio
+│
+├── infrastructure/                 # Capa de infraestructura (implementaciones)
+│   └── firebase/
+│       ├── config.ts               # Configuración e inicialización Firebase
+│       └── FirebaseTicketRepository.ts  # Implementación del repositorio con Firebase
+│
+├── presentation/                   # Capa de presentación (UI)
+│   ├── router/
+│   │   └── index.ts                # Definición de rutas (cliente + admin)
+│   ├── stores/
+│   │   ├── ticketStore.ts          # Estado global del ticket del cliente
+│   │   └── adminStore.ts           # Estado global del panel admin
+│   ├── styles/
+│   │   ├── variables.scss          # Variables de diseño (colores, radios, sombras)
+│   │   └── global.scss             # Estilos globales (botones, cards, layout)
+│   └── views/
+│       ├── client/
+│       │   ├── HomeView.vue        # Página de inicio (ingresar nombre)
+│       │   ├── ConfirmView.vue     # Confirmar o cancelar el ticket
+│       │   ├── TicketView.vue      # Ticket activo con cuenta regresiva
+│       │   ├── ServiceView.vue     # Servicio en curso (esperando finalización)
+│       │   ├── RatingView.vue      # Calificar experiencia (1-5 estrellas)
+│       │   ├── ThanksView.vue      # Página de agradecimiento
+│       │   └── CancelledView.vue   # Página de turno cancelado
+│       └── admin/
+│           ├── AdminDashboard.vue  # Login + lista de tickets activos
+│           └── AdminDetail.vue     # Detalle del cliente + finalizar atención
+│
+├── App.vue                         # Componente raíz (solo renderiza RouterView)
+└── main.ts                         # Punto de entrada (monta Vue, Pinia, Router)
+
+
+PERFILES
+--------
+
+1. CLIENTE: Flujo para el usuario que quiere entrar a la cola virtual
+   Inicio → Confirmar → Ticket (espera) → Servicio → Calificar → Gracias
+
+2. ADMIN: Flujo para el administrador que gestiona la cola
+   Login → Dashboard (ver cola) → Detalle (finalizar y llamar siguiente)
+
+
+CREDENCIALES ADMIN
+------------------
+Usuario: admin
+Contraseña: 1234
+
+
+COMANDOS
+--------
+Instalar dependencias:   npm install
+Levantar desarrollo:     npm run dev
+Build producción:        npm run build
+
+
+URLs DE DESARROLLO (npm run dev)
+---------------------------------
+
+CLIENTE:
+  http://localhost:5173/              → Inicio (ingresar nombre)
+  http://localhost:5173/confirm       → Confirmación del ticket
+  http://localhost:5173/ticket        → Ticket en espera (cuenta regresiva)
+  http://localhost:5173/service       → Servicio en curso
+  http://localhost:5173/rating        → Calificación (estrellas)
+  http://localhost:5173/thanks        → Página de agradecimiento
+  http://localhost:5173/cancelled     → Turno cancelado
+
+ADMIN:
+  http://localhost:5173/admin         → Login + Dashboard
+  http://localhost:5173/admin/detail/:id → Detalle de un cliente específico
+
+================================================================================

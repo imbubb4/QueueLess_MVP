@@ -1,0 +1,26 @@
+{
+  "name": "queueless-mvp",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.38",
+    "vue-router": "^4.5.1",
+    "pinia": "^3.0.2",
+    "firebase": "^11.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/tsconfig": "^0.9.1",
+    "typescript": "~5.7.3",
+    "vite": "^6.3.0",
+    "vue-tsc": "^2.2.10",
+    "sass": "^1.87.0"
+  }
+}
